@@ -10,6 +10,7 @@ This code is currently used by the site http://aggregation.co
 Database tables
 ---------------
 
+```
 CREATE TABLE `feeds` (
 
  `id` int(11) NOT NULL,
@@ -38,3 +39,23 @@ CREATE TABLE `items` (
 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8
 
+```
+
+Setup
+-----
+
+This application requires Docker to be installed. 
+
+1. To build the image that this application depends on: `./build`. 
+2. To create a container containing the app: `./run`. 
+3. To configure the database and start the cron job: `docker exec -it aggregation /bin/bash ./setup.sh`
+4. You should now be able to enter 'localhost/index.php' into your browser to view the application. Updates are made every minute.  
+
+Teardown
+--------
+
+The container will continue to run until it is stopped or the docker daemon is shut down. To stop and delete the container use: 
+
+```
+docker kill aggregation && docker rm aggregation 
+```
