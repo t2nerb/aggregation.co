@@ -117,3 +117,9 @@ nav span {
 	font-size: smaller;
 	text-align: justify;
 }
+
+#desc {
+  margin-top: 20px;
+  font-size: 20px;
+  color: Blue;
+}
