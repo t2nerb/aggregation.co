@@ -44,18 +44,29 @@ CREATE TABLE `items` (
 Setup
 -----
 
-This application requires Docker to be installed. 
+This application requires Docker to be installed. Numerous scripts are include to aid in the deployment for this application.  
 
-1. To build the image that this application depends on: `./build`. 
-2. To create a container containing the app: `./run`. 
+1. To build the image that this application depends on:`./build`
+ 
+2. To create the container use: `docker run -d --name aggregation -v $(pwd):/app/ -p 80:80 -it aggregation`
+    
 3. To configure the database and start the cron job: `docker exec -it aggregation /bin/bash ./setup.sh`
-4. You should now be able to enter 'localhost/index.php' into your browser to view the application. Updates are made every minute.  
+4. You should now be able to enter `localhost/index.php` into your browser to view the application. Updates are made every minute.  
+
+Any changes made to the code while the container is running is reflected immediately. 
 
 Teardown
 --------
 
-The container will continue to run until it is stopped or the docker daemon is shut down. To stop and delete the container use: 
+The container will continue to run until it is stopped or the docker daemon is shut down. To stop the container:  
 
 ```
-docker kill aggregation && docker rm aggregation 
+docker stop aggregation
 ```
+
+To remove the container: 
+
+```
+docker rm aggregation
+```
+

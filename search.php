@@ -1,5 +1,11 @@
 
+<?php
+require("include/db.php");
+require("include/header.php");
+require("include/nav.php");
+require("include/rss_util.php");
 
+$form = <<< 'HTML'
 <br />
 <br />
 <form action="search.php" method="POST">
@@ -9,25 +15,19 @@
         <input type="submit" value="Submit" />
     </div>
 </form>
+HTML;
 
-<?php
-require("include/db.php");
-require("include/header.php");
-require("include/nav.php");
-require("include/rss_util.php");
-
+echo $form;
 // Get user input
 $input = $_POST['input'];
+echo "<br />Results for: ";
 echo $input;
 
 echo "<div id=\"content\">\n";
-echo "<div id=\"content-middle\">\n";
 
-$query = "SELECT items.id AS id,feedTitle,feedLink,itemTitle,itemPubDate,itemLink,itemDesc FROM feeds,items WHERE items.itemDesc LIKE '%" . $input . "%'";
-
+$query = "SELECT DISTINCT items.id AS id,feedTitle,feedLink,itemTitle,itemPubDate,itemLink,itemDesc FROM feeds,items WHERE items.itemDesc LIKE '%" . $input . "%' " . "OR items.itemTitle LIKE '%" . $input . "%'";
 DisplayColumn($db, $query);
 
-echo "</div>\n";
 echo "</div>\n";
 
 function DisplayColumn($db, $query)
