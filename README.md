@@ -10,7 +10,7 @@ This code is currently used by the site http://aggregation.co
 Database tables
 ---------------
 
-```
+```sql
 CREATE TABLE `feeds` (
 
  `id` int(11) AUTO_INCREMENT,
