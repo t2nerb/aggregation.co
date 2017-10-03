@@ -3,6 +3,27 @@ require("include/db.php");
 require("include/header.php");
 require("include/nav.php");
 
+$form = <<< 'HTML'
+<br />
+<br />
+<form action="feeds.php" method="POST">
+    <div align="center">
+        <span id="desc"> Add RSS feed:</span>
+        <input type="text" name="input" placeholder="URL" />
+        <input type="text" name="colnum" placeholder="Column number"/>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+HTML;
+echo $form;
+
+$input = $_POST['input'];
+$colnum = $_POST['colnum'];
+
+$add_query = "INSERT INTO feeds (displayColumn, link) VALUES (" . $colnum . ", '" . $input . "')";
+// echo $add_query;
+Query($db, $add_query);
+
 // Get all the user's feeds
 $query = "SELECT * FROM feeds";
 $rows = Query($db, $query);
