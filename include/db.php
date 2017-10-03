@@ -28,9 +28,9 @@ $username = "root";
 /*$password = ""; */
 $password = "";
 
-// $host = "localhost";
-// $host = "209.17.116.156";
 $host = "localhost";
+// $host = "209.17.116.156";
+// $host = "205.178.137.139";
 
 $dbname = "project1";
 

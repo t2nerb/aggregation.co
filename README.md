@@ -13,11 +13,13 @@ Database tables
 ```
 CREATE TABLE `feeds` (
 
- `id` int(11) NOT NULL,
+ `id` int(11) AUTO_INCREMENT,
 
  `displayColumn` int(11) NOT NULL,
 
- `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+ `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+ 
+ PRIMARY KEY (`id`)
 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8
 

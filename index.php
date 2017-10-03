@@ -4,6 +4,28 @@ require("include/header.php");
 require("include/nav.php");
 require("include/rss_util.php");
 
+$form = <<< 'HTML'
+<br />
+<br />
+<form action="index.php" method="POST">
+    <div align="center">
+        <span id="desc"> Add RSS feed:</span>
+        <input type="text" name="input" placeholder="URL" />
+        <input type="text" name="colnum" placeholder="Column number"/>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+HTML;
+echo $form;
+
+$input = $_POST['input'];
+$colnum = $_POST['colnum'];
+
+$add_query = "INSERT INTO feeds (displayColumn, link) VALUES (" . $colnum . ", '" . $input . "')";
+// echo $add_query;
+Query($db, $add_query);
+
+
 echo "<div id=\"content\">\n";
 echo "<div id=\"content-left\">\n";
 

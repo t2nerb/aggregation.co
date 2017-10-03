@@ -3,11 +3,13 @@ USE project1;
 
 CREATE TABLE IF NOT EXISTS `feeds` (
 
-	`id` int(11) NOT NULL,
+	`id` int(11) AUTO_INCREMENT,
 
 	`displayColumn` int(11) NOT NULL,
 
-	`link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+	`link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+
+    PRIMARY KEY (`id`)
 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -28,7 +30,3 @@ CREATE TABLE IF NOT EXISTS `items` (
 	`itemDesc` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-INSERT INTO feeds (id, displayColumn, link) VALUES (1, 1, 'http://feeds.denverpost.com/dp-news-breaking-local');
-INSERT INTO feeds (id, displayColumn, link) VALUES (2, 2, 'http://www.espn.com/espn/rss/news');
-INSERT INTO feeds (id, displayColumn, link) VALUES (3, 3, 'https://www.wired.com/feed/rss');
