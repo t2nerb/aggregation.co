@@ -46,12 +46,11 @@ Setup
 
 This application requires Docker to be installed. Numerous scripts are include to aid in the deployment for this application.  
 
-1. To build the image that this application depends on:`./build`
- 
-2. To create the container use: `docker run -d --name aggregation -v $(pwd):/app/ -p 80:80 -it aggregation`
-    
-3. To configure the database and start the cron job: `docker exec -it aggregation /bin/bash ./setup.sh`
-4. You should now be able to enter `localhost/index.php` into your browser to view the application. Updates are made every minute.  
+1. Pull base image: `docker pull tutum/lamp` 
+2. To build the application image:`./build`
+3. To create the container use: `docker run -d --name aggregation -v $(pwd):/app/ -p 80:80 -it aggregation`
+4. To configure the database and start the cron job: `docker exec -it aggregation /bin/bash /app/setup.sh`
+5. You should now be able to enter `localhost/index.php` into your browser to view the application. Updates are made every minute.  
 
 Any changes made to the code while the container is running is reflected immediately. 
 
